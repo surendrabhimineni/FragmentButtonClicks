@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
             transaction.commit()
         }
 
+        //Alert Dialog
         button3.setOnClickListener{
 
             val alertDialog = AlertDialog.Builder(this)
