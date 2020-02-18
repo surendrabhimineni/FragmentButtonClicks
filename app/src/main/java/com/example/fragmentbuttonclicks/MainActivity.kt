@@ -1,9 +1,14 @@
 package com.example.fragmentbuttonclicks
 
 import android.content.Context
+import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.stream.DoubleStream.builder
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +46,28 @@ class MainActivity : AppCompatActivity() {
             transaction.addToBackStack(null)
 
             transaction.commit()
+        }
+
+        button3.setOnClickListener{
+
+            val alertDialog = AlertDialog.Builder(this)
+
+            alertDialog.setMessage("Do you want to close this application")
+                .setCancelable(false)
+
+                .setPositiveButton("proceed",DialogInterface.OnClickListener {
+                    dialog, id ->finish()
+                })
+                .setNegativeButton("Cancel",DialogInterface.OnClickListener{
+                    dialog, id -> dialog.cancel()
+                })
+                .setNeutralButton("ok",DialogInterface.OnClickListener{
+                    dialog, id -> dialog.dismiss()
+                })
+
+            val alert = alertDialog.create()
+            alert.setTitle("Alert Dialog")
+            alert.show()
         }
 
     }
